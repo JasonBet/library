@@ -10,6 +10,18 @@ function Book(title, author, pgNums, read) {
     }
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(book) {
   // do stuff here
+  myLibrary.push(book);
 }
+
+function displayBooks(){
+  const card = document.createElement("div");
+  card.setAttribute("class", "card");
+
+  
+  document.library.appendChild(card);
+}
+
+let book1 = new Book ("idk", "joe", 4, true);
+let book2 = new Book ("maaan", "lee", 6, false);
