@@ -15,13 +15,23 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
+let Library = document.querySelector(".library");
 function displayBooks(){
   const card = document.createElement("div");
   card.setAttribute("class", "card");
 
+  for (const book of myLibrary){
+    const card = document.createElement("div");
+    card.setAttribute("class", "card");
+    card.textContent = book.info();
+    Library.appendChild(card);
+  }
   
-  document.library.appendChild(card);
 }
 
 let book1 = new Book ("idk", "joe", 4, true);
 let book2 = new Book ("maaan", "lee", 6, false);
+
+// temp code
+addBookToLibrary(book1);
+addBookToLibrary(book2);
