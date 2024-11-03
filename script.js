@@ -16,18 +16,13 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
+// Display book on screen
 let Library = document.querySelector(".library");
-function displayBooks(){
+function displayBook(book){
   const card = document.createElement("div");
   card.setAttribute("class", "card");
-
-  for (const book of myLibrary){
-    const card = document.createElement("div");
-    card.setAttribute("class", "card");
-    card.textContent = book.info();
-    Library.appendChild(card);
-  }
-  
+  card.textContent = book.info();
+  Library.appendChild(card);
 }
 
 // Dialog to add new book
@@ -44,16 +39,19 @@ function closeAdd() {
 let formNewBook = document.querySelector("form");
 formNewBook.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log("form submitted")
 
+  // Grab form entries and place in FormData object
   const bookData = new FormData(formNewBook);
   let title = bookData.get("title");
   let author = bookData.get("author");
   let pgNums = bookData.get("pgNums");
   let read = bookData.get("read");
 
+  // Create new book from the FormData object and add to library
   let newBook = new Book (title, author, pgNums, read);
   addBookToLibrary(newBook);
+  displayBook(newBook);
+  dialogAddBook.close();
 })
 
 let book1 = new Book ("idk", "joe", 4, true);
@@ -62,4 +60,7 @@ let book2 = new Book ("maaan", "lee", 6, false);
 // temp code
 addBookToLibrary(book1);
 addBookToLibrary(book2);
-displayBooks();
+
+for (const book of myLibrary){
+  displayBook(book);
+}
