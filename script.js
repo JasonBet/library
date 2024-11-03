@@ -33,7 +33,11 @@ function displayBooks(){
 // Dialog to add new book
 let dialogAddBook = document.querySelector("dialog");
 function newBookDialog() {
-  document.getElementById('addBookDialog').showModal();
+  dialogAddBook.showModal();
+}
+function closeAdd() {
+  
+  dialogAddBook.close();
 }
 
 let book1 = new Book ("idk", "joe", 4, true);
