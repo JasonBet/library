@@ -30,9 +30,16 @@ function displayBooks(){
   
 }
 
+// Dialog to add new book
+let dialogAddBook = document.querySelector("dialog");
+function newBookDialog() {
+  document.getElementById('addBookDialog').showModal();
+}
+
 let book1 = new Book ("idk", "joe", 4, true);
 let book2 = new Book ("maaan", "lee", 6, false);
 
 // temp code
 addBookToLibrary(book1);
 addBookToLibrary(book2);
+displayBooks();
