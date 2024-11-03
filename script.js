@@ -6,7 +6,8 @@ function Book(title, author, pgNums, read) {
     this.pgNums = pgNums;
     this.read = read;
     this.info = function() {
-        return (`${this.title} by ${this.author}, ${this.pgNums} pages, not read yet`);
+        return (`${this.title} by ${this.author}, 
+          ${this.pgNums} pages, ${read ? "read book" : "not read yet"}`);
     }
 }
 
