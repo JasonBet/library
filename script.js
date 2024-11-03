@@ -40,6 +40,22 @@ function closeAdd() {
   dialogAddBook.close();
 }
 
+// Receive form data and create book object
+let formNewBook = document.querySelector("form");
+formNewBook.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log("form submitted")
+
+  const bookData = new FormData(formNewBook);
+  let title = bookData.get("title");
+  let author = bookData.get("author");
+  let pgNums = bookData.get("pgNums");
+  let read = bookData.get("read");
+
+  let newBook = new Book (title, author, pgNums, read);
+  addBookToLibrary(newBook);
+})
+
 let book1 = new Book ("idk", "joe", 4, true);
 let book2 = new Book ("maaan", "lee", 6, false);
 
