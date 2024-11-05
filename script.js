@@ -35,7 +35,7 @@ function displayBook(book){
   // Add delete book button to card
   let deleteButton = document.createElement("button");
   deleteButton.setAttribute("class", "deleteButton");
-  deleteButton.textContent = "Delete Button";
+  deleteButton.textContent = "Delete Book";
 
   // Add delete book button to card
   let readStatusButton = document.createElement("button");
