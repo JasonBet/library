@@ -14,6 +14,7 @@ function Book(title, author, pgNums, read) {
 function addBookToLibrary(book) {
   // do stuff here
   myLibrary.push(book);
+  displayBook(book);
 }
 
 // Display book on screen
@@ -22,6 +23,7 @@ function displayBook(book){
   const card = document.createElement("div");
   card.setAttribute("class", "card");
   card.textContent = book.info();
+  card.dataset.cell = myLibrary.length;
   Library.appendChild(card);
 }
 
@@ -50,7 +52,6 @@ formNewBook.addEventListener("submit", (e) => {
   // Create new book from the FormData object and add to library
   let newBook = new Book (title, author, pgNums, read);
   addBookToLibrary(newBook);
-  displayBook(newBook);
   dialogAddBook.close();
 })
 
@@ -60,7 +61,3 @@ let book2 = new Book ("maaan", "lee", 6, false);
 // temp code
 addBookToLibrary(book1);
 addBookToLibrary(book2);
-
-for (const book of myLibrary){
-  displayBook(book);
-}
