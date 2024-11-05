@@ -8,12 +8,13 @@ function Book(title, author, pgNums, read) {
     this.read = read;
     this.info = function() {
         return (`${this.title} by ${this.author}, 
-          ${this.pgNums} pages, ${read ? "read book" : "not read yet"}`);
+          ${this.pgNums} pages, ${this.read ? "read book" : "not read yet"}`);
     }
 }
 
 Book.prototype.changeReadStatus = function() {
   console.log("setting read status");
+  this.read = !this.read;
 }
 
 function addBookToLibrary(book) {
@@ -45,6 +46,23 @@ function displayBook(book){
   card.appendChild(deleteButton);
   card.appendChild(readStatusButton);
   
+}
+
+function updateBook(card) {
+  card.textContent = myLibrary[Number(card.dataset.cell)-1].info();
+
+  // Add delete book button to card
+  let deleteButton = document.createElement("button");
+  deleteButton.setAttribute("class", "deleteButton");
+  deleteButton.textContent = "Delete Button";
+
+  // Add delete book button to card
+  let readStatusButton = document.createElement("button");
+  readStatusButton.setAttribute("class", "readStatusButton");
+  readStatusButton.textContent = "Read Status";
+
+  card.appendChild(deleteButton);
+  card.appendChild(readStatusButton);
 }
 
 // Dialog to add new book
@@ -84,7 +102,9 @@ Library.addEventListener("click", (e) => {
     deleteBook(e.target.parentElement)
   }
   else if(e.target.classList.contains("readStatusButton")) {
-    myLibrary[e.target.parentElement.dataset.cell].changeReadStatus();
+    // Identify book by dataset cell of card, use library array to access book
+    myLibrary[Number(e.target.parentElement.dataset.cell)-1].changeReadStatus();
+    updateBook(e.target.parentElement);
   }
 })
 
