@@ -1,5 +1,6 @@
 const myLibrary = [];
 
+// Book Object prototype
 function Book(title, author, pgNums, read) {
     this.title = title;
     this.author = author;
@@ -9,6 +10,10 @@ function Book(title, author, pgNums, read) {
         return (`${this.title} by ${this.author}, 
           ${this.pgNums} pages, ${read ? "read book" : "not read yet"}`);
     }
+}
+
+Book.prototype.changeReadStatus = function() {
+  console.log("setting read status");
 }
 
 function addBookToLibrary(book) {
@@ -31,8 +36,14 @@ function displayBook(book){
   deleteButton.setAttribute("class", "deleteButton");
   deleteButton.textContent = "Delete Button";
 
+  // Add delete book button to card
+  let readStatusButton = document.createElement("button");
+  readStatusButton.setAttribute("class", "readStatusButton");
+  readStatusButton.textContent = "Read Status";
+
   Library.appendChild(card);
   card.appendChild(deleteButton);
+  card.appendChild(readStatusButton);
   
 }
 
@@ -64,7 +75,7 @@ formNewBook.addEventListener("submit", (e) => {
   dialogAddBook.close();
 })
 
-// Capture delete button click
+// Capture delete or read button click
 Library.addEventListener("click", (e) => {
   console.log(e.target);
   console.log(e.target.parentElement)
@@ -72,12 +83,16 @@ Library.addEventListener("click", (e) => {
   if(e.target.classList.contains("deleteButton")){
     deleteBook(e.target.parentElement)
   }
+  else if(e.target.classList.contains("readStatusButton")) {
+    myLibrary[e.target.parentElement.dataset.cell].changeReadStatus();
+  }
 })
 
 // Functionality to delete a book
 function deleteBook(card) {
   card.remove();
 }
+
 let book1 = new Book ("idk", "joe", 4, true);
 let book2 = new Book ("maaan", "lee", 6, false);
 let book3 = new Book ("pickles", "ronald", 16, false);
