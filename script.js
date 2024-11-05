@@ -91,6 +91,8 @@ formNewBook.addEventListener("submit", (e) => {
   let newBook = new Book (title, author, pgNums, read);
   addBookToLibrary(newBook);
   dialogAddBook.close();
+
+  formNewBook.reset();
 })
 
 // Capture delete or read button click
