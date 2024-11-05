@@ -77,6 +77,12 @@ function closeAdd() {
 
 // Receive form data and create book object
 let formNewBook = document.querySelector("form");
+let cancelButton = document.getElementById("cancelAdd");
+cancelButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  dialogAddBook.close();
+  formNewBook.reset();
+})
 formNewBook.addEventListener("submit", (e) => {
   e.preventDefault();
 
