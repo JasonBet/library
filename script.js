@@ -24,7 +24,15 @@ function displayBook(book){
   card.setAttribute("class", "card");
   card.textContent = book.info();
   card.dataset.cell = myLibrary.length;
+
+  // Add delete book button to card
+  let deleteButton = document.createElement("button");
+  deleteButton.setAttribute("class", "deleteButton");
+  deleteButton.textContent = "Delete Button";
+
   Library.appendChild(card);
+  card.appendChild(deleteButton);
+  
 }
 
 // Dialog to add new book

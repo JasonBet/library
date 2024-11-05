@@ -23,11 +23,23 @@ img {
 }
 
 /* CSS Styles for Library */
+.body {
+    width: 100%;
+    height: 100%;
+}
 .library{
+    width: 100vw;
+    height: 75vh;
     display: flex;
     gap: 4px;
 }
 
 .card {
     background-color: blue;
+    width: 200px;
+    height: 220px;
+}
+
+.deleteButton {
+
 }
