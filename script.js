@@ -19,6 +19,7 @@ function addBookToLibrary(book) {
 
 // Display book on screen
 let Library = document.querySelector(".library");
+Library.setAttribute("onclick", "event.stopPropagation()")
 function displayBook(book){
   const card = document.createElement("div");
   card.setAttribute("class", "card");
@@ -63,9 +64,25 @@ formNewBook.addEventListener("submit", (e) => {
   dialogAddBook.close();
 })
 
+// Capture delete button click
+Library.addEventListener("click", (e) => {
+  console.log(e.target);
+  console.log(e.target.parentElement)
+  console.log(e.target.classList.contains("deleteButton"));
+  if(e.target.classList.contains("deleteButton")){
+    deleteBook(e.target.parentElement)
+  }
+})
+
+// Functionality to delete a book
+function deleteBook(card) {
+  card.remove();
+}
 let book1 = new Book ("idk", "joe", 4, true);
 let book2 = new Book ("maaan", "lee", 6, false);
+let book3 = new Book ("pickles", "ronald", 16, false);
 
 // temp code
 addBookToLibrary(book1);
 addBookToLibrary(book2);
+addBookToLibrary(book3);
