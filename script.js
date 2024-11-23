@@ -1,5 +1,6 @@
 const myLibrary = [];
 
+/* COMMENT OUT FUNCTION WITH PLAIN CONSTRUCTOR
 // Book Object prototype
 function Book(title, author, pgNums, read) {
     this.title = title;
@@ -15,6 +16,25 @@ function Book(title, author, pgNums, read) {
 Book.prototype.changeReadStatus = function() {
   console.log("setting read status");
   this.read = !this.read;
+}
+  */
+// Class refactor
+class Book {
+  constructor(title, author, pgNums, read){
+    this.title = title;
+    this.author = author;
+    this.pgNums = pgNums;
+    this.read = read;
+    this.info = function() {
+      return (`${this.title} by ${this.author}, 
+        ${this.pgNums} pages, ${this.read ? "read book" : "not read yet"}`);
+    }
+  }
+
+  changeReadStatus() {
+    console.log("setting read status as a class");
+    this.read = !this.read;
+  }
 }
 
 function addBookToLibrary(book) {
@@ -130,16 +150,3 @@ addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
 
-// Class refactor
-class Bookc {
-  constructor(title, author, pgNums, read){
-    this.title = title;
-    this.author = author;
-    this.pgNums = pgNums;
-    this.read = read;
-    this.info = function() {
-      return (`${this.title} by ${this.author}, 
-        ${this.pgNums} pages, ${this.read ? "read book" : "not read yet"}`);
-    }
-  }
-}
