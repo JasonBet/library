@@ -129,3 +129,17 @@ let book3 = new Book ("pickles", "ronald", 16, false);
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
+
+// Class refactor
+class Bookc {
+  constructor(title, author, pgNums, read){
+    this.title = title;
+    this.author = author;
+    this.pgNums = pgNums;
+    this.read = read;
+    this.info = function() {
+      return (`${this.title} by ${this.author}, 
+        ${this.pgNums} pages, ${this.read ? "read book" : "not read yet"}`);
+    }
+  }
+}
